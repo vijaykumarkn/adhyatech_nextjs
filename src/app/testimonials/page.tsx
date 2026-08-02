@@ -13,28 +13,28 @@ import { getSeo } from "../../lib/seo";
 const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL;
 
 export async function generateMetadata(): Promise<Metadata> {
-  try {
-    const seo = await getSeo("testimonials");
+  const seo = await getSeo("testimonials");
 
+  if (!seo) {
     return {
-      title: seo.meta_title,
-      description: seo.meta_description,
-      keywords: seo.meta_keywords?.split(","),
-      robots: seo.meta_robots,
-      openGraph: {
-        title: seo.og_title || seo.meta_title,
-        description: seo.og_description || seo.meta_description,
-        images: seo.meta_image
-          ? [`${storageUrl}/${seo.meta_image}`]
-          : [],
-      },
-    };
-  } catch {
-    return {
-      title: "Projects",
-      description: "Our Projects",
+      title: "Testimonials — Adyatech Solutions",
+      description: "What our clients say about working with us. 400+ projects delivered across 14 countries.",
     };
   }
+
+  return {
+    title: seo.meta_title,
+    description: seo.meta_description,
+    keywords: seo.meta_keywords?.split(","),
+    robots: seo.meta_robots,
+    openGraph: {
+      title: seo.og_title || seo.meta_title,
+      description: seo.og_description || seo.meta_description,
+      images: seo.meta_image
+        ? [`${storageUrl}/${seo.meta_image}`]
+        : [],
+    },
+  };
 }
 
 

@@ -19,3 +19,12 @@ out/
 .agents/
 .claude/
 skills-lock.json
+
+# build & session files
+Build.md
+PARTICLE_SLIDER_IMPLEMENTATION.md
+SESSION_HISTORY.md
+
+# crazygl demo (particle slider)
+src/app/crazygl-demo/
+src/components/CrazyGLParticleSlider.tsx

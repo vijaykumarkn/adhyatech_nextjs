@@ -105,11 +105,11 @@ const alumnyoPricing = [
 ]
 
 const liveCustomers = [
-  { name: 'Bharatiya University', stat: '12,847', label: 'active alumni' },
-  { name: 'St. Joseph\'s College', stat: '8,200', label: 'profiles migrated' },
-  { name: 'IIT Karnataka', stat: '₹14.2L', label: 'donations / month' },
-  { name: 'NIMS Bangalore', stat: '847', label: 'RSVPs in 6 weeks' },
-  { name: 'Pragati College', stat: '4.8★', label: 'app store rating' },
+  { name: 'Powerful Modules', stat: '10+', label: 'to manage everything' },
+  { name: 'Cloud Accessibility', stat: '24×7', label: 'anytime, anywhere' },
+  { name: 'Secure Data Management', stat: '100%', label: 'protected always' },
+  { name: 'Quick Member Search', stat: '5 Min', label: 'average time' },
+  { name: 'Unlimited Alumni Growth', stat: '∞', label: 'scale freely' },
 ]
 
 export default async function AlumnyoPage() {

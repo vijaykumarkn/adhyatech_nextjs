@@ -1,7 +1,16 @@
 import { apiFetch } from "./api";
 import { Service } from "@/types/service";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+// Detect build time
+const isBuildTime = typeof window === 'undefined' &&
+  (!API_URL || process.env.CI === 'true' || process.env.VERCEL === '1');
+
 export async function getServices(): Promise<Service[]> {
+  if (isBuildTime) {
+    return [];
+  }
   return apiFetch<Service[]>("/services");
 }
 

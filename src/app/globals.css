@@ -8398,14 +8398,15 @@ a:hover > .shot,
 /* ============================================================
    CHAT WIDGET
    Floating assistant — Adyatech brand tokens throughout
-   FAB sits bottom-left; .fab (Let's talk) stays bottom-right
+   FAB + panel sit bottom-right (took over the retired
+   "Let's talk" .fab spot — see commented code in page files)
    ============================================================ */
 
 /* ── FAB trigger (transparent — the orb is the whole button) ── */
 .chat-fab {
   position: fixed;
   bottom: 24px;
-  left: 24px;
+  right: 24px;
   z-index: 998;
   width: 56px;
   height: 56px;
@@ -8485,7 +8486,7 @@ a:hover > .shot,
 .chat-panel {
   position: fixed;
   bottom: 92px;
-  left: 24px;
+  right: 24px;
   z-index: 999;
   width: 360px;
   max-height: 540px;
@@ -8864,7 +8865,7 @@ a:hover > .shot,
   }
 
   .chat-fab {
-    left: 16px;
+    right: 16px;
     bottom: 16px;
     width: 50px;
     height: 50px;

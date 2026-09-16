@@ -83,7 +83,10 @@ export default async function Home() {
         <BigCTA />
       </main>
       <Footer />
+      {/* "Let's talk" FAB retired (Sep 2026) - the AI chat orb now owns the bottom-right
+           corner and captures the same leads in-chat (both land in the leads Sheet).
       <Link href="#contact" className="fab">Let's talk →</Link>
+      */}
       <ChatWidget />
     </>
   )

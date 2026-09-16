@@ -125,7 +125,7 @@ async function streamAssistant(
   onDelta: (text: string) => void,
 ): Promise<void> {
   const ctrl = new AbortController()
-  const timer = setTimeout(() => ctrl.abort(), 30_000)
+  const timer = setTimeout(() => ctrl.abort(), 65_000) // just above the server's 60s guard
   try {
     const res = await fetch('/api/chat', {
       method: 'POST',
@@ -159,7 +159,7 @@ function now() {
 const INITIAL_MESSAGE: Message = {
   id: 0,
   from: 'bot',
-  text: "Hey 👋 I'm the Adyatech assistant. Ask me anything about our services, products, or how to get started.",
+  text: "Hey 👋 I'm Adya, Adyatech's assistant. I can help you get a quote, see our work, or connect you with our team — what brings you here today?",
   time: now(),
 }
 
@@ -393,8 +393,8 @@ export default function ChatWidget() {
           <div className="chat-panel__brand">
             <VoiceOrb state="speaking" variant="brand" className="size-16" />
             <div>
-              <strong>Adyatech Assistant</strong>
-              <span>Typically replies instantly</span>
+              <strong>Adya</strong>
+              <span>Adyatech's assistant · typically replies instantly</span>
             </div>
           </div>
           <div className="chat-panel__head-actions">

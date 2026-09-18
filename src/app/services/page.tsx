@@ -12,6 +12,36 @@ import { getSeo } from "../../lib/seo";
 import { getServices } from "../../lib/services";
 
 import { bands } from "../../lib/constants";
+import {
+  Globe, AppWindow, Smartphone, ShoppingCart, Bot, Database, Mic,
+  Layers, FileText, Plug, ServerCog, PenTool, type LucideIcon,
+} from "lucide-react";
+
+/* Service cards show a domain icon instead of the CMS letter code.
+   Keyed by slug; the CMS letter (icon_label) is the fallback. */
+const SERVICE_ICONS: Record<string, LucideIcon> = {
+  "web-development": Globe,
+  "custom-software": AppWindow,
+  "mobile-apps": Smartphone,
+  "ecommerce": ShoppingCart,
+  "ai-agents": Bot,
+  "rag-knowledge-systems": Database,
+  "voice-ai": Mic,
+  "saas-development": Layers,
+  "cms-content-platforms": FileText,
+  "api-integrations": Plug,
+  "cloud-devops": ServerCog,
+  "ui-ux-design": PenTool,
+};
+
+function ServiceIcon({ slug, label, className }: { slug: string; label: string; className: string }) {
+  const Icon = SERVICE_ICONS[slug];
+  return (
+    <div className={className} aria-hidden="true">
+      {Icon ? <Icon size={28} strokeWidth={1.9} /> : label}
+    </div>
+  );
+}
 
 const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL;
 
@@ -74,7 +104,7 @@ export default async function ServicesPage() {
                 <div className="svc-grid">
                   {band.services.map((svc) => (
                     <article key={svc.slug} className="svc-card" id={svc.slug}>
-                      <div className={`svc-card__icon ${svc.icon_class}`}>{svc.icon_label}</div>
+                      <ServiceIcon slug={svc.slug} label={svc.icon_label} className={`svc-card__icon ${svc.icon_class}`} />
                       <div>
                         <div className="svc-card__code">S/{svc.code}</div>
                         <h3>{svc.title} <em>{svc.title_em}</em></h3>

@@ -33,9 +33,11 @@ export default function TimelineProgress({ children }: TimelineProgressProps) {
       // Add/remove active class on items based on line position
       const items = container.querySelectorAll('.timeline-item');
       items.forEach((item) => {
-        // Get the dot's position (32px from top of item)
+        // Get the dot's position from its own computed offset
+        // (32px from item top on desktop, 8px on mobile)
         const itemRect = item.getBoundingClientRect();
-        const dotPosition = itemRect.top + 32;
+        const dotOffset = parseFloat(getComputedStyle(item, '::before').top) || 32;
+        const dotPosition = itemRect.top + dotOffset;
 
         // Only glow when the white line has reached or passed the dot
         if (lineTopPosition >= dotPosition) {

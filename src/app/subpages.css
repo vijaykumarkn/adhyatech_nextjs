@@ -881,7 +881,8 @@
   .team-grid { grid-template-columns: 1fr; }
   .perks-grid { grid-template-columns: 1fr; }
   .job-card { grid-template-columns: 1fr; }
-  .timeline::before { left: 8px; }
+  .timeline__line-bg,
+  .timeline__line-fill { left: 8px; }
   .timeline-item { grid-template-columns: 1fr; gap: 12px; padding-left: 32px; }
   .timeline-item::before { left: 1px; top: 8px; }
   .timeline-content { padding-left: 0; }

@@ -19,3 +19,12 @@ out/
 .agents/
 .claude/
 skills-lock.json
+
+# local notes & demo
+SESSION_HISTORY.md
+Temp.md
+PARTICLE_SLIDER_IMPLEMENTATION.md
+src/components/CrazyGLParticleSlider.tsx
+src/app/crazygl-demo/
+docs/call-agent-prompt.md
+docs/google-sheets-leads.md

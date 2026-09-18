@@ -362,7 +362,12 @@ export default function SphereParticles({
       // Fixed orientation (CrazyGL: basePitch so sphere faces camera)
       const basePitch = 0.42;
       modelMatrix(model, 0, basePitch);
-      perspective(proj, 0.95, bw / Math.max(1, bh), 0.1, 100);
+      const aspect = bw / Math.max(1, bh);
+      // Pull the camera back on narrow (portrait) screens so the sphere fits horizontally
+      // instead of being clipped at the left/right edges.
+      const camZfit = Math.max(camZ, 2.05 / (Math.tan(0.95 / 2) * aspect)); // 2.05 = sphere radius 1.6 + shimmer margin
+      view[14] = -camZfit;
+      perspective(proj, 0.95, aspect, 0.1, 100);
       mul(tmp, view, model);
       mv.set(tmp);
       mul(mvp, proj, tmp);
@@ -416,7 +421,6 @@ export default function SphereParticles({
           const tanHalf = Math.tan(0.95 / 2);
           const ndcX = pointerSmooth.x * 2 - 1;
           const ndcY = -(pointerSmooth.y * 2 - 1); // CrazyGL exact formula
-          const aspect = bw / Math.max(1, bh);
 
           // Direction in world space (from camera)
           let dwx = ndcX * tanHalf * aspect;
@@ -429,7 +433,7 @@ export default function SphereParticles({
 
           // Transform ray to LOCAL space (R^-1 = R^T for rotation matrix)
           const m = model;
-          const camZ = 4.2;
+          const camZ = camZfit;
 
           // Camera origin in LOCAL space - try positive camZ
           const Olx = m[0] * 0 + m[1] * 0 + m[2] * camZ;

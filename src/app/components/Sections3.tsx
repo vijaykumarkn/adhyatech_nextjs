@@ -145,7 +145,7 @@ export function Alumnyo() {
             {features.map(f => (
               <li key={f.num}>
                 <span>{f.num}</span>
-                <div><strong>{f.title}</strong>{f.desc}</div>
+                <div><strong>{f.title}</strong>{' '}{f.desc}</div>
               </li>
             ))}
           </ul>

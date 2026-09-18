@@ -5115,7 +5115,13 @@ HERO+MOTION GRAPHICS → HTML SECTION 3 Layered: gradient mesh+particles+cursor 
   .shot__viewport img {
     object-fit: contain !important;
   }
+}
 
+/* Mobile phones (all phone widths) — grid collapses & component sizing.
+   These rules were previously nested inside the (max-width: 320px) block
+   above, so they never applied on real phones (360-430px wide). They now
+   live in their own <=767px block. */
+@media (max-width: 767px) {
   .services__grid,
   .products__grid,
   .work__grid,
@@ -6274,6 +6280,28 @@ HERO+MOTION GRAPHICS → HTML SECTION 3 Layered: gradient mesh+particles+cursor 
 
   .timeline-item::before {
     left: 36px;
+  }
+
+  /* About page progress timeline (TimelineProgress): keep the animated line,
+     red dots and stacked items aligned together on mobile. Scoped to .timeline
+     so the contact page's .timeline__list variant above is untouched. */
+  .timeline .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-left: 36px;
+  }
+
+  .timeline .timeline-item::before {
+    left: 1px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+  }
+
+  .timeline__line-bg,
+  .timeline__line-fill {
+    left: 8px;
   }
 }
 
@@ -9306,4 +9334,10 @@ a:hover > .shot,
   height: 100%;
   object-fit: contain;
   padding: 0;
+}
+
+/* CrazyGL particle slider: 100vh fallback for browsers without dvh;
+   the component's inline height (100dvh) overrides this where supported. */
+.crazygl-slider {
+  height: 100vh;
 }

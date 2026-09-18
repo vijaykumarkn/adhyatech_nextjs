@@ -179,18 +179,7 @@ export default function EcommercePage() {
           ]}
         />
 
-        <section className="svc-sec svc-sec--coal">
-          <div className="container">
-            <div className="svc-proof">
-              <div>
-                <div className="svc-proof__eyebrow">Proof · Restaurant chain</div>
-                <blockquote>Online ordering for a <em>14-outlet chain</em> with real-time kitchen routing and headless commerce.</blockquote>
-                <div className="svc-proof__cite"><strong>Foodaroo</strong> · Multi-outlet ordering platform</div>
-              </div>
-              <a href="/portfolio" className="btn btn--gold svc-proof__link">View the case study →</a>
-            </div>
-          </div>
-        </section>
+        
 
         <section className="svc-sec svc-sec--ink">
           <div className="container">
